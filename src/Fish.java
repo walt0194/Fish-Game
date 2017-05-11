@@ -7,6 +7,7 @@ public class Fish
 		Deck d = new Deck();
 		
 		
+		
 		GUIWindow window = new GUIWindow();
 		window.setSize(600, 400);
 		window.setVisible(true);
