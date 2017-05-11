@@ -16,6 +16,11 @@ public class Player {
 			team = "Odds";
 		nextTeam++;
 	}
+	public ArrayList <PlayingCard> getHand()
+	{
+		return hand;
+	}
+	
 	public String getName()
 	{
 		return name;
@@ -34,6 +39,12 @@ public class Player {
 		}
 		sortHand();
 	}
+	
+	public void setHand(ArrayList <PlayingCard> h)
+	{
+		hand = h;
+	}
+	
 	public void sortHand()
 	{
 		int count = 0;
