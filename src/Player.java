@@ -16,6 +16,7 @@ public class Player {
 			team = "Odds";
 		nextTeam++;
 	}
+	
 	public ArrayList <PlayingCard> getHand()
 	{
 		return hand;
