@@ -4,6 +4,9 @@ public class Fish
 {
 	public static void main(String[] args)
 	{
+		Deck d = new Deck();
+		
+		
 		GUIWindow window = new GUIWindow();
 		window.setSize(600, 400);
 		window.setVisible(true);
