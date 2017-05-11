@@ -106,7 +106,6 @@ public class Player {
 			 PlayingCard temp = hand.get(i);
 			 hand.set(i, hand.get(minPosition));
 			 hand.set(minPosition, temp);
-			 System.out.println(hand);
 		}
 		for (int i = spades; i < spades+hearts; i++) 
 		{
@@ -123,7 +122,6 @@ public class Player {
 			 PlayingCard temp = hand.get(i);
 			 hand.set(i, hand.get(minPosition));
 			 hand.set(minPosition, temp);
-			 System.out.println(hand);
 		}
 		for (int i = spades+hearts; i < spades+hearts+clubs; i++) 
 		{
@@ -140,7 +138,6 @@ public class Player {
 			 PlayingCard temp = hand.get(i);
 			 hand.set(i, hand.get(minPosition));
 			 hand.set(minPosition, temp);
-			 System.out.println(hand);
 		}
 		for (int i = spades+hearts+clubs; i < hand.size(); i++) 
 		{
@@ -157,7 +154,6 @@ public class Player {
 			 PlayingCard temp = hand.get(i);
 			 hand.set(i, hand.get(minPosition));
 			 hand.set(minPosition, temp);
-			 System.out.println(hand);
 		}
 	}
 	

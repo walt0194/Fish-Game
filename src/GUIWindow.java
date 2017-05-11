@@ -94,4 +94,9 @@ private static final long serialVersionUID = 1L;
 			text.setText("You pressed Declare Half-Suit!");		
 	}
 	
+	public void displayHand(Player p)
+	{
+		hand.setText(p.toString());
+	}
+	
 }
