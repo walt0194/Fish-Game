@@ -1,5 +1,4 @@
 import javax.swing.*;
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.*;
@@ -32,7 +31,7 @@ private static final long serialVersionUID = 1L;
 		add(instructions);
 		
 		JPanel playerButtons = new JPanel(new GridBagLayout());
-GridBagConstraints c = new GridBagConstraints();
+		GridBagConstraints c = new GridBagConstraints();
 		
 		player1 = new JButton("Player 1");
 		player2 = new JButton("Player 2");
