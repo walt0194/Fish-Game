@@ -1,6 +1,5 @@
 import javax.swing.*;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.*;
 import java.awt.event.*;
 
 public class GUIWindow extends JFrame implements ActionListener
@@ -29,6 +28,7 @@ private static final long serialVersionUID = 1L;
 		
 		instructions.add(options);
 		add(instructions);
+		instructions.setBackground(Color.green);
 		
 		JPanel playerButtons = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -63,21 +63,26 @@ private static final long serialVersionUID = 1L;
 		c.gridx = 3;
 		c.gridy = 0;
 		playerButtons.add(player6, c);
+		playerButtons.setBackground(Color.yellow);
 		add(playerButtons);
+		
 		
 		JPanel handPanel = new JPanel();
 		hand = new JLabel("Your hand: ");
 		handPanel.add(hand);
 		add(handPanel);
+		handPanel.setBackground(Color.blue);
 		
 		JPanel eventText = new JPanel();
 		text = new JLabel("You haven't pressed Declare Half-Suit");
 		eventText.add(text);
 		add(eventText);
+		eventText.setBackground(Color.red);
 		
 		JPanel buttons = new JPanel();
 		declareSet = new JButton("Declare Half-Suit");
 		declareSet.addActionListener(this);
+		buttons.setBackground(Color.orange);
 		buttons.add(declareSet);	
 		
 		add(buttons);
