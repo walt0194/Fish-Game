@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class Fish 
+public class Fish
 {
+	static ArrayList<Player> playerList;
+	
 	public static void main(String[] args)
 	{
 		Deck d = new Deck();
 		
-		ArrayList<Player> playerList = new ArrayList<Player>();
+		playerList = new ArrayList<Player>();
 		
 		for(int i=0; i<6; i++)
 		{
@@ -22,4 +24,6 @@ public class Fish
 		
 		window.displayHand(playerList.get(0));
 	}
+	
+	
 }
