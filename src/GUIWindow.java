@@ -50,14 +50,10 @@ public class GUIWindow extends JFrame implements ActionListener
 	
 	JPanel actionButtons;
 	JButton declareSet;
-	
-	//ArrayList<Player> playerList;
 
 	public GUIWindow()
 	{
 		super("Fish");
-		
-		//this.playerList = playerList;
 		
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));	
 
