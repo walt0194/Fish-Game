@@ -4,6 +4,7 @@ import javax.swing.*;
 public class Fish
 {
 	static ArrayList<Player> playerList;
+	static boolean changeTurn = false;
 	
 	public static void main(String[] args)
 	{
@@ -22,8 +23,22 @@ public class Fish
 		window.setVisible(true);
 		window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
-		window.displayHand(playerList.get(0));
+		Player currentPlayer = playerList.get(0);
+		int turn = 0;
+		
+		boolean gameOver = false;
+		
+		while(!gameOver)
+		{
+			//window.clearWindows();
+			window.displayHand(currentPlayer);
+			
+			while(!changeTurn)
+			{}
+			
+			changeTurn = false;
+			turn++;
+			currentPlayer = playerList.get(turn%6);
+		}
 	}
-	
-	
 }

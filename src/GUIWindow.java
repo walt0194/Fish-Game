@@ -110,9 +110,9 @@ public class GUIWindow extends JFrame implements ActionListener
 		
 		suitOptions = new JPanel();
 		add(suitOptions);
-		suitOptions.setBackground(Color.CYAN);
+		suitOptions.setBackground(Color.cyan);
 		
-		cardOptions = new JPanel();
+		cardOptions = new JPanel(new GridBagLayout());
 		add(cardOptions);
 		cardOptions.setBackground(Color.MAGENTA);
 		
@@ -140,23 +140,64 @@ public class GUIWindow extends JFrame implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getSource() == declareSet)
-			text.setText("You pressed Declare Half-Suit!"); displaySuitOptions();
+			text.setText("You pressed Declare Half-Suit!"); 
 			
 		if(e.getSource() == player1)
-			options.setText("Requesting a card from Player One"); displaySuitOptions();
+		{
+			options.setText("Requesting a card from Player One"); 
+			displaySuitOptions();
+		}
 		if(e.getSource() == player2)
-			options.setText("Requesting a card from Player Two"); displaySuitOptions();
+		{
+			options.setText("Requesting a card from Player Two"); 
+			displaySuitOptions();
+		}
 		if(e.getSource() == player3)
-			options.setText("Requesting a card from Player Three"); displaySuitOptions();
+		{
+			options.setText("Requesting a card from Player Three"); 
+			displaySuitOptions();
+		}
 		if(e.getSource() == player4)
-			options.setText("Requesting a card from Player Four"); displaySuitOptions();
+		{
+			options.setText("Requesting a card from Player Four"); 
+			displaySuitOptions();
+		}
 		if(e.getSource() == player5)
-			options.setText("Requesting a card from Player Five"); displaySuitOptions();
+		{
+			options.setText("Requesting a card from Player Five"); 
+			displaySuitOptions();
+		}
 		if(e.getSource() == player6)
-			options.setText("Requesting a card from Player Six"); displaySuitOptions();
-			
+		{
+			options.setText("Requesting a card from Player Six"); 
+			displaySuitOptions();
+		}
+		
 		if(e.getSource() == spades)
+		{ 
+			options.setText(options.getText() + "; Suit chosen: spades");
 			displayCardOptions(spades);
+		}
+		if(e.getSource() == hearts)
+		{ 
+			options.setText(options.getText() + "; Suit chosen: hearts");
+			displayCardOptions(hearts);
+		}
+		if(e.getSource() == clubs)
+		{ 
+			options.setText(options.getText() + "; Suit chosen: clubs");
+			displayCardOptions(clubs);
+		}
+		if(e.getSource() == diamonds)
+		{ 
+			options.setText(options.getText() + "; Suit chosen: diamonds");
+			displayCardOptions(diamonds);
+		}
+		if(e.getSource() == jokersAnd7s)
+		{ 
+			options.setText(options.getText() + "; Suit chosen: Jokers and 7s");
+			displayCardOptions(jokersAnd7s);
+		}
 	}
 	
 	public void displayHand(Player p)
@@ -165,7 +206,7 @@ public class GUIWindow extends JFrame implements ActionListener
 	}
 	
 	public void displaySuitOptions()
-	{
+	{	
 		suitOptions.add(spades);
 		spades.addActionListener(this);
 		suitOptions.add(hearts);
@@ -185,5 +226,59 @@ public class GUIWindow extends JFrame implements ActionListener
 		suitOptions.remove(clubs);
 		suitOptions.remove(diamonds);
 		suitOptions.remove(jokersAnd7s);
+		
+		GridBagConstraints c = new GridBagConstraints();
+		
+		if(b == jokersAnd7s)
+		{
+			cardOptions.add(seven);
+			cardOptions.add(bigJoker);
+			cardOptions.add(smallJoker);
+		}
+		else
+		{
+			c.gridx = 0;
+			c.gridy = 0;
+			cardOptions.add(ace, c);
+			c.gridx = 1;
+			c.gridy = 0;
+			cardOptions.add(two, c);			
+			c.gridx = 2;
+			c.gridy = 0;
+			cardOptions.add(three, c);
+			c.gridx = 3;
+			c.gridy = 0;
+			cardOptions.add(four, c);
+			c.gridx = 4;
+			c.gridy = 0;
+			cardOptions.add(five, c);
+			c.gridx = 5;
+			c.gridy = 0;
+			cardOptions.add(six, c);
+			c.gridx = 0;
+			c.gridy = 1;
+			cardOptions.add(eight, c);
+			c.gridx = 1;
+			c.gridy = 1;
+			cardOptions.add(nine, c);
+			c.gridx = 2;
+			c.gridy = 1;
+			cardOptions.add(ten, c);
+			c.gridx = 3;
+			c.gridy = 1;
+			cardOptions.add(jack, c);
+			c.gridx = 4;
+			c.gridy = 1;
+			cardOptions.add(queen, c);
+			c.gridx = 5;
+			c.gridy = 1;
+			cardOptions.add(king, c);
+		}	
+	}
+
+	public void clearWindows()
+	{
+		suitOptions.removeAll();
+		cardOptions.removeAll();
 	}
 }
