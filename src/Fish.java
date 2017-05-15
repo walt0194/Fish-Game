@@ -27,10 +27,12 @@ public class Fish
 		int turn = 0;
 		
 		boolean gameOver = false;
+		Player playerAsked;
+		PlayingCard cardRequested;
 		
 		while(!gameOver)
 		{
-			//window.clearWindows();
+			window.clearWindows();
 			window.displayHand(currentPlayer);
 			
 			while(!changeTurn)

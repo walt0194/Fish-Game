@@ -114,7 +114,7 @@ public class GUIWindow extends JFrame implements ActionListener
 		
 		cardOptions = new JPanel(new GridBagLayout());
 		add(cardOptions);
-		cardOptions.setBackground(Color.MAGENTA);
+		cardOptions.setBackground(Color.magenta);
 		
 		handPanel = new JPanel();
 		hand = new JLabel("Your hand: ");
@@ -144,32 +144,38 @@ public class GUIWindow extends JFrame implements ActionListener
 			
 		if(e.getSource() == player1)
 		{
-			options.setText("Requesting a card from Player One"); 
+			options.setText("Requesting a card from Player One");
+			givePlayer(0);
 			displaySuitOptions();
 		}
 		if(e.getSource() == player2)
 		{
-			options.setText("Requesting a card from Player Two"); 
+			options.setText("Requesting a card from Player Two");
+			givePlayer(1);
 			displaySuitOptions();
 		}
 		if(e.getSource() == player3)
 		{
-			options.setText("Requesting a card from Player Three"); 
+			options.setText("Requesting a card from Player Three");
+			givePlayer(2);
 			displaySuitOptions();
 		}
 		if(e.getSource() == player4)
 		{
-			options.setText("Requesting a card from Player Four"); 
+			options.setText("Requesting a card from Player Four");
+			givePlayer(3);
 			displaySuitOptions();
 		}
 		if(e.getSource() == player5)
 		{
-			options.setText("Requesting a card from Player Five"); 
+			options.setText("Requesting a card from Player Five");
+			givePlayer(4);
 			displaySuitOptions();
 		}
 		if(e.getSource() == player6)
 		{
-			options.setText("Requesting a card from Player Six"); 
+			options.setText("Requesting a card from Player Six");
+			givePlayer(5);
 			displaySuitOptions();
 		}
 		
@@ -198,6 +204,7 @@ public class GUIWindow extends JFrame implements ActionListener
 			options.setText(options.getText() + "; Suit chosen: Jokers and 7s");
 			displayCardOptions(jokersAnd7s);
 		}
+		
 	}
 	
 	public void displayHand(Player p)
@@ -281,4 +288,10 @@ public class GUIWindow extends JFrame implements ActionListener
 		suitOptions.removeAll();
 		cardOptions.removeAll();
 	}
+
+	public int givePlayer(int i)
+	{
+		return i;
+	}
+	
 }
