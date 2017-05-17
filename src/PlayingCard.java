@@ -32,7 +32,13 @@ public class PlayingCard
 	{
 		if (number == 0)
 			return suit;
-		else
+		else if(number < 11)
 			return suit.charAt(0)+""+number;
+		else if(number == 12)
+			return suit.charAt(0)+"J";
+		else if(number ==13)
+			return suit.charAt(0)+"Q";
+		else
+			return suit.charAt(0)+"K";
 	}
 }

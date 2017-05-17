@@ -5,8 +5,14 @@ public class Fish
 {
 	static ArrayList<Player> playerList;
 	static boolean changeTurn = false;
+	static boolean moveOn = false;
+	static int playerAsked;
+	static String suitRequested = "";
+	static int cardValueRequested;
+	static Object lock1 = new Object();
+	static Object lock2 = new Object();
 	
-	public static void main(String[] args)
+	public static void main(String[] args) throws InterruptedException
 	{
 		Deck d = new Deck();
 		
@@ -14,7 +20,7 @@ public class Fish
 		
 		for(int i=0; i<6; i++)
 		{
-			playerList.add(new Player("Player"+(i+1)));
+			playerList.add(new Player("Player "+(i+1)));
 			playerList.get(i).drawHand(d);
 		}
 		
@@ -27,12 +33,40 @@ public class Fish
 		int turn = 0;
 		
 		boolean gameOver = false;
-		Player playerAsked;
-		PlayingCard cardRequested;
 		
 		while(!gameOver)
 		{
-			window.clearWindows();
+			window.clearWindow();
+			window.displayHand(currentPlayer);
+
+			synchronized(lock1)
+			{ 
+				while(!moveOn)
+				{
+					lock1.wait();
+				}
+			}
+			
+			PlayingCard card = new PlayingCard(cardValueRequested, suitRequested);
+			
+			if(currentPlayer.getTeam().equals(playerList.get(playerAsked).getTeam()))
+			{
+				window.printSameTeam();
+			}
+			else if(!currentPlayer.hasHalfSuit(card))
+			{
+				window.printNotInSuit();
+			}
+			else if(!playerList.get(playerAsked).hasCard(card))
+			{
+				window.printNoCard(playerList.get(playerAsked), card);
+			}
+			else 
+			{
+				playerList.get(playerAsked).removeCard(card);
+				currentPlayer.addCard(card);
+			}
+
 			window.displayHand(currentPlayer);
 			
 			while(!changeTurn)

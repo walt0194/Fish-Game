@@ -32,6 +32,7 @@ public class GUIWindow extends JFrame implements ActionListener
 	JButton four = new JButton("four");
 	JButton five = new JButton("five");
 	JButton six = new JButton("six");
+	
 	JButton seven = new JButton("seven");
 	JButton eight = new JButton("eight");
 	JButton nine = new JButton("nine");
@@ -39,8 +40,13 @@ public class GUIWindow extends JFrame implements ActionListener
 	JButton jack = new JButton("jack");
 	JButton queen = new JButton("queen");
 	JButton king = new JButton("king");
+	
 	JButton bigJoker = new JButton("big joker");
 	JButton smallJoker = new JButton("small joker");
+	JButton sevenSpades = new JButton("seven of spades");
+	JButton sevenHearts = new JButton("seven of hearts");
+	JButton sevenClubs = new JButton("seven of clubs");
+	JButton sevenDiamonds = new JButton("seven of diamonds");
 	
 	JPanel handPanel;
 	JLabel hand;
@@ -145,58 +151,63 @@ public class GUIWindow extends JFrame implements ActionListener
 		if(e.getSource() == player1)
 		{
 			options.setText("Requesting a card from Player One");
-			givePlayer(0);
+			Fish.playerAsked = 0;
 			displaySuitOptions();
 		}
 		if(e.getSource() == player2)
 		{
 			options.setText("Requesting a card from Player Two");
-			givePlayer(1);
+			Fish.playerAsked = 1;
 			displaySuitOptions();
 		}
 		if(e.getSource() == player3)
 		{
 			options.setText("Requesting a card from Player Three");
-			givePlayer(2);
+			Fish.playerAsked = 2;
 			displaySuitOptions();
 		}
 		if(e.getSource() == player4)
 		{
 			options.setText("Requesting a card from Player Four");
-			givePlayer(3);
+			Fish.playerAsked = 3;
 			displaySuitOptions();
 		}
 		if(e.getSource() == player5)
 		{
 			options.setText("Requesting a card from Player Five");
-			givePlayer(4);
+			Fish.playerAsked = 4;
 			displaySuitOptions();
 		}
 		if(e.getSource() == player6)
 		{
 			options.setText("Requesting a card from Player Six");
-			givePlayer(5);
+			Fish.playerAsked = 5;
 			displaySuitOptions();
 		}
 		
+		//** Suit Buttons **//
 		if(e.getSource() == spades)
 		{ 
 			options.setText(options.getText() + "; Suit chosen: spades");
+			Fish.suitRequested = "Spades";
 			displayCardOptions(spades);
 		}
 		if(e.getSource() == hearts)
 		{ 
 			options.setText(options.getText() + "; Suit chosen: hearts");
+			Fish.suitRequested = "Hearts";
 			displayCardOptions(hearts);
 		}
 		if(e.getSource() == clubs)
 		{ 
 			options.setText(options.getText() + "; Suit chosen: clubs");
+			Fish.suitRequested = "Clubs";
 			displayCardOptions(clubs);
 		}
 		if(e.getSource() == diamonds)
 		{ 
 			options.setText(options.getText() + "; Suit chosen: diamonds");
+			Fish.suitRequested = "Diamonds";
 			displayCardOptions(diamonds);
 		}
 		if(e.getSource() == jokersAnd7s)
@@ -205,6 +216,50 @@ public class GUIWindow extends JFrame implements ActionListener
 			displayCardOptions(jokersAnd7s);
 		}
 		
+		//** Card Value Buttons **//
+		if(e.getSource() == ace)
+			updatePush(1);
+		if(e.getSource() == two)
+			updatePush(2);
+		if(e.getSource() == three)
+			updatePush(3);
+		if(e.getSource() == four)
+			updatePush(4);
+		if(e.getSource() == five)
+			updatePush(5);
+		if(e.getSource() == six)
+			updatePush(6);
+		if(e.getSource() == eight)
+			updatePush(8);
+		if(e.getSource() == nine)
+			updatePush(9);
+		if(e.getSource() == ten)
+			updatePush(10);
+		if(e.getSource() == jack)
+			updatePush(11);
+		if(e.getSource() == queen)
+			updatePush(12);
+		if(e.getSource() == king)
+			updatePush(13);
+		if(e.getSource() == sevenSpades)
+			updatePush(7);
+		if(e.getSource() == sevenHearts)
+			updatePush(7);
+		if(e.getSource() == sevenClubs)
+			updatePush(7);
+		
+		if(e.getSource() == sevenDiamonds)
+			updatePush(7);
+		if(e.getSource() == smallJoker)
+		{
+			Fish.suitRequested = "Small Joker";
+			updatePush(0);
+		}
+		if(e.getSource() == bigJoker)
+		{
+			Fish.suitRequested = "Big Joker";
+			updatePush(0);
+		}
 	}
 	
 	public void displayHand(Player p)
@@ -228,70 +283,100 @@ public class GUIWindow extends JFrame implements ActionListener
 	
 	public void displayCardOptions(JButton b)
 	{
-		suitOptions.remove(spades);
-		suitOptions.remove(hearts);
-		suitOptions.remove(clubs);
-		suitOptions.remove(diamonds);
-		suitOptions.remove(jokersAnd7s);
+		clearWindow();
 		
 		GridBagConstraints c = new GridBagConstraints();
 		
 		if(b == jokersAnd7s)
 		{
-			cardOptions.add(seven);
+			cardOptions.add(sevenSpades);
+			sevenSpades.addActionListener(this);
+			cardOptions.add(sevenHearts);
+			sevenHearts.addActionListener(this);
 			cardOptions.add(bigJoker);
-			cardOptions.add(smallJoker);
+			bigJoker.addActionListener(this);
+			c.gridy = 1;
+			cardOptions.add(sevenClubs ,c);
+			sevenClubs.addActionListener(this);
+			c.gridy = 1;
+			cardOptions.add(sevenDiamonds, c);
+			sevenDiamonds.addActionListener(this);
+			c.gridy = 1;
+			cardOptions.add(smallJoker, c);
+			smallJoker.addActionListener(this);
 		}
 		else
 		{
-			c.gridx = 0;
 			c.gridy = 0;
 			cardOptions.add(ace, c);
-			c.gridx = 1;
-			c.gridy = 0;
-			cardOptions.add(two, c);			
-			c.gridx = 2;
-			c.gridy = 0;
+			ace.addActionListener(this);
+
+			cardOptions.add(two, c);
+			two.addActionListener(this);
+
 			cardOptions.add(three, c);
-			c.gridx = 3;
-			c.gridy = 0;
+			three.addActionListener(this);
+
 			cardOptions.add(four, c);
-			c.gridx = 4;
-			c.gridy = 0;
+			four.addActionListener(this);
+
 			cardOptions.add(five, c);
-			c.gridx = 5;
-			c.gridy = 0;
+			five.addActionListener(this);
+
 			cardOptions.add(six, c);
-			c.gridx = 0;
+			six.addActionListener(this);
+
 			c.gridy = 1;
 			cardOptions.add(eight, c);
-			c.gridx = 1;
-			c.gridy = 1;
+			eight.addActionListener(this);
+
 			cardOptions.add(nine, c);
-			c.gridx = 2;
-			c.gridy = 1;
+			nine.addActionListener(this);
+
 			cardOptions.add(ten, c);
-			c.gridx = 3;
-			c.gridy = 1;
+			ten.addActionListener(this);
+
 			cardOptions.add(jack, c);
-			c.gridx = 4;
-			c.gridy = 1;
+			jack.addActionListener(this);
+
 			cardOptions.add(queen, c);
-			c.gridx = 5;
-			c.gridy = 1;
+			queen.addActionListener(this);
+
 			cardOptions.add(king, c);
+			king.addActionListener(this);
 		}	
 	}
 
-	public void clearWindows()
+	public void printNoCard(Player p, PlayingCard c)
+	{
+		options.setText(p.getName() + " does not have " + c);
+	}
+	
+	public void printNotInSuit()
+	{
+		options.setText("You don't have the half-suit of the card you requested");
+	}
+	
+	public void printSameTeam()
+	{
+		options.setText("Player"+(Fish.playerAsked+1)+" is on your team!");
+	}
+	
+	public void clearWindow()
 	{
 		suitOptions.removeAll();
 		cardOptions.removeAll();
 	}
 
-	public int givePlayer(int i)
+	public void updatePush(int value)
 	{
-		return i;
+		System.out.println(value);
+		Fish.cardValueRequested = value;
+		Fish.moveOn = true;
+		synchronized(Fish.lock1)
+		{
+			Fish.lock1.notifyAll();
+		}
 	}
-	
+
 }

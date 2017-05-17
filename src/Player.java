@@ -199,6 +199,7 @@ public class Player {
 		String halfSuit = c.getHalfSuit();
 		for (int i = 0; i < hand.size(); i++)
 		{
+			System.out.println(hand.get(i).getHalfSuit());
 			if (hand.get(i).getHalfSuit().equals(halfSuit))
 				return true;
 		}
@@ -225,17 +226,3 @@ public class Player {
 	}
 	
 }
-// int min = hand.get(i).getNumber();
-//PlayingCard temp;
-
-//min = i;
-//for (int scan = i+1; scan < spades; scan++)
-//{
-//	  if (hand.get(scan).getNumber() < hand.get(min).getNumber())
-	//	  min = scan;
-
-//	  temp = hand.get(min);
-	//  hand.set(min, hand.get(i));
-	  //hand.set(i, temp);
-//}
-//System.out.println(hand);
